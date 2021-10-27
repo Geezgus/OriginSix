@@ -102,6 +102,7 @@ function activateLink() {
 
     if (checkpointStart && checkpointEnd) {
       linkToSection.classList.add('active');
+      window.history.replaceState(null, '', `#${sectionId}`);
     } else {
       linkToSection.classList.remove('active');
     }
