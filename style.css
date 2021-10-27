@@ -28,6 +28,7 @@ img {
 
   --hue: 159;
 
+  /* COLOR */
   /* background */
   --color-background-1: hsl(0, 0%, 98%);
   --color-background-2: hsl(0, 0%, 100%);
@@ -41,6 +42,15 @@ img {
   --color-title: hsl(var(--hue), 41%, 10%);
   --color-text: hsl(0, 0%, 46%);
   --color-text-light: var(--color-background-1);
+
+  /* FONT SIZE */
+  --font-size-body: 1.6rem;
+  --font-size-title: 3rem;
+  --font-size-subtitle: 1.6rem;
+  --font-size-logo: 2.1rem;
+
+  --font-family-title: 'Poppins', sans-serif;
+  --font-family-body: 'DM Sans', sans-serif;
 }
 
 /* BASE ------------------------------------------------- */
@@ -49,30 +59,36 @@ html {
 }
 
 body {
-  font: 400 1.6rem 'DM Sans', sans-serif;
+  font: 400 var(--font-size-body) var(--font-family-body);
   -webkit-font-smoothing: antialiased;
   color: var(--color-text);
   background: var(--color-background-1);
 }
 
+[class^='icon-'],
+[class*=' icon-'] {
+  font-size: 2.4rem;
+}
+
 .title {
-  font: 700 3rem 'Poppins', sans-serif;
+  font: 700 var(--font-size-title) var(--font-family-title);
   -webkit-font-smoothing: auto;
   color: var(--color-title);
 }
 
 .button {
   height: 5.6rem;
-  padding: 3.2rem;
+  padding: 0 3.2rem;
   border-radius: 0.4rem;
 
-  font: 500 1.6rem 'DM Sans', sans-serif;
-  color: var(--color-background-1);
+  font: 500 var(--font-size-body) var(--font-family-body);
+  color: var(--color-text-light);
   background: var(--color-primary);
-  transition: background 0.3s;
 
   display: inline-flex;
   align-items: center;
+
+  transition: background 0.3s;
 }
 
 .button:hover {
@@ -114,6 +130,7 @@ body {
 
 #header {
   width: 100%;
+  height: var(--header-height);
   border-bottom: 1px solid #e4e4e4;
   margin-bottom: 3.2rem;
 
@@ -124,27 +141,24 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 10;
 }
 
 #header.scroll {
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
 }
 
-main {
-  margin-top: calc(var(--header-height) + 3.2rem);
-}
-
-/* footer {
-} */
-
 /* SECTION ---------------------------------------------- */
 .section {
-  padding: 8rem 0;
+  padding: calc(8rem) 0;
 }
 
 .section .title {
   margin-bottom: 1.6rem;
+}
+
+.section .subtitle {
+  font-size: var(--font-size-subtitle);
 }
 
 .section header {
@@ -161,7 +175,7 @@ main {
 
 /* LOGO ------------------------------------------------- */
 .logo {
-  font: 700 2.1rem 'Poppins', sans-serif;
+  font: 700 var(--font-size-logo) var(--font-family-title);
   color: var(--color-title);
 }
 
@@ -169,10 +183,13 @@ main {
   color: var(--color-primary);
 }
 
+.logo-alt span {
+  color: var(--color-text-light);
+}
+
 /* NAVIGATION ------------------------------------------- */
 nav {
   width: 100%;
-  height: var(--header-height);
 
   display: flex;
   justify-content: space-between;
@@ -184,12 +201,13 @@ nav ul li {
 }
 
 nav ul li a {
-  transition: color 0.2s;
-
   position: relative;
+
+  transition: color 0.2s;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
   color: var(--color-primary);
 }
 
@@ -199,22 +217,25 @@ nav ul li a::after {
 
   content: '';
   background: var(--color-primary);
-  transition: width 0.2s;
 
   position: absolute;
   left: 0;
   bottom: -2.4rem;
+
+  transition: width 0.2s;
 }
 
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
   width: 100%;
 }
 
 nav .menu {
-  opacity: 0;
   visibility: hidden;
+  opacity: 0;
 
   top: -2.4rem;
+
   transition: all 0.2s;
 }
 
@@ -224,11 +245,11 @@ nav .menu ul {
 
 /* Show mobile menu */
 nav.show .menu {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
   background-color: var(--color-background-1);
 
   position: fixed;
@@ -254,30 +275,32 @@ nav.show ul.grid {
   cursor: pointer;
   /* COME BACK LATER ---------------------------------------------------------*/
   -webkit-tap-highlight-color: transparent;
-  transition: top 0.2s;
 
   position: absolute;
   right: 2.4rem;
+
+  transition: top 0.2s;
 }
 
 nav.show .icon-menu,
 nav .icon-close {
-  opacity: 0;
   visibility: hidden;
+  opacity: 0;
 
   top: -2.4rem;
 }
 
 nav .icon-menu,
 nav.show .icon-close {
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
 
   top: 2.4rem;
 }
 
 /* HOME ------------------------------------------------- */
 #home {
+  padding: calc(8rem + var(--header-height)) 0;
   overflow: hidden;
 }
 
@@ -287,24 +310,25 @@ nav.show .icon-close {
 
 #home .image {
   position: relative;
+  --image-offset-right: 4.708rem;
 }
 
 #home .image::before {
-  width: 103.5%;
+  width: 103.56%;
   height: 108%;
 
   content: '';
   background: var(--color-second);
 
   position: absolute;
-  top: -16.8%;
-  left: 16.7%;
+  top: -18.13%;
+  left: 13.72%;
   z-index: 0;
 }
 
 #home .image img {
   position: relative;
-  right: 4.708rem;
+  right: var(--image-offset-right);
 }
 
 #home .image img,
@@ -337,14 +361,14 @@ nav.show .icon-close {
 
 #about .image::before {
   width: 94.16%;
-  height: 98.3%;
+  height: 80.3%;
 
   content: '';
   background: var(--color-second);
 
   position: absolute;
-  top: -8.4%;
-  left: -33%;
+  top: -8.25%;
+  left: -25.61%;
   z-index: 0;
 }
 
@@ -378,6 +402,7 @@ nav.show .icon-close {
 .card i {
   display: block;
   margin-bottom: 2.4rem;
+
   font-size: 8rem;
   color: var(--color-primary);
 }
@@ -389,8 +414,8 @@ nav.show .icon-close {
 
 /* TESTIMONIALS ----------------------------------------- */
 #testimonials .container {
-  margin-left: 0rem;
-  margin-right: 0rem;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 #testimonials header {
@@ -461,7 +486,6 @@ nav.show .icon-close {
 
 #contact .button i,
 #contact ul li i {
-  font-size: 2.4rem;
   margin-right: 1rem;
 }
 
@@ -480,4 +504,244 @@ nav.show .icon-close {
 
 #contact ul.grid {
   gap: 3.2rem;
+}
+
+/* FOOTER ----------------------------------------------- */
+footer {
+  background-color: var(--color-primary);
+}
+
+footer.section {
+  padding: 6.4rem 0;
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 2.4rem;
+}
+
+footer .brand p {
+  color: var(--color-text-light);
+  margin-bottom: 1.2rem;
+}
+
+footer i {
+  color: var(--color-text-light);
+}
+
+/* footer .social {
+  display: flex;
+  gap: 3.2rem;
+} */
+
+footer .social {
+  width: fit-content;
+
+  display: grid;
+  grid-auto-flow: column;
+  gap: 3.2rem;
+}
+
+footer .social a {
+  transition: 0.2s;
+}
+
+footer .social a:hover {
+  transform: translateY(-2px);
+}
+
+/* Back to Top */
+#back-to-top {
+  --position: 1.6rem;
+
+  padding: 0.8rem;
+  line-height: 0;
+
+  visibility: hidden;
+  opacity: 0;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  clip-path: circle();
+
+  position: fixed;
+  right: var(--position);
+  bottom: var(--position);
+
+  transform: translateY(calc(100% + var(--position)));
+  transition: all 0.2s cubic-bezier(0.49, 0.01, 0.45, 1.58);
+}
+
+#back-to-top.show {
+  visibility: visible;
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* MEDIA QUERIES ---------------------------------------- */
+/* Media queries are according to Bootstrap 4's CSS style */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* SETTINGS --------------------------------------------- */
+  :root {
+    --font-size-title: 3.6rem;
+    --font-size-subtitle: 1.8rem;
+  }
+
+  /* LAYOUT ----------------------------------------------- */
+  main {
+    margin-top: var(--header-height);
+  }
+
+  /* LOGO ------------------------------------------------- */
+  .logo-alt {
+    font-size: 2.49375rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* BASE ------------------------------------------------- */
+  .button {
+    height: 5rem;
+  }
+
+  /* LAYOUT ----------------------------------------------- */
+  .container {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* SECTION ---------------------------------------------- */
+  .section {
+    padding: 16rem 0;
+  }
+
+  .section header,
+  #testimonials header {
+    max-width: 52.3rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+  }
+
+  /* NAVIGATION ------------------------------------------- */
+  nav .menu {
+    visibility: visible;
+    opacity: 1;
+
+    top: 0;
+  }
+
+  nav .menu ul {
+    display: flex;
+    gap: 3.2rem;
+  }
+
+  nav .menu ul li a.title {
+    font: 400 var(--font-size-body) var(--font-family-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav .menu ul li a.title.active {
+    font-weight: bold;
+    -webkit-font-smoothing: auto;
+  }
+
+  nav .icon-menu {
+    display: none;
+  }
+
+  /* HOME ------------------------------------------------- */
+  #home .container {
+    margin: 0 auto;
+
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #home .image {
+    order: 1;
+  }
+
+  #home .image::before {
+    left: calc(13.72% - var(--image-offset-right));
+  }
+
+  #home .text {
+    max-width: 396px;
+    margin: 0;
+
+    text-align: left;
+    order: 0;
+  }
+
+  #home .text p {
+    max-width: 347px;
+  }
+
+  /* ABOUT ------------------------------------------------ */
+  #about .container {
+    margin: 0 auto;
+
+    grid-auto-flow: column;
+  }
+
+  /* SERVICES --------------------------------------------- */
+  .cards {
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card {
+    padding-left: 4.8rem;
+    padding-right: 4.8rem;
+  }
+
+  /* TESTIMONIALS ----------------------------------------- */
+  #testimonials .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* CONTACT ---------------------------------------------- */
+  #contact .container {
+    grid-auto-flow: column;
+    align-items: center;
+  }
+
+  #contact .text {
+    max-width: 40.4rem;
+  }
+
+  #contact .text p {
+    max-width: 36.4rem;
+  }
+
+  /* FOOTER ----------------------------------------------- */
+  footer.section {
+    padding: 6rem 0;
+  }
+
+  footer .container {
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer .logo {
+    font-size: calc(var(--font-size-logo) * 1.6);
+  }
 }

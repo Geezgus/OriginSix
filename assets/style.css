@@ -1,17 +1,16 @@
 @font-face {
   font-family: 'beautysalon-icons';
-  src: url('fonts/beautysalon-icons.eot?qxnjnr');
-  src: url('fonts/beautysalon-icons.eot?qxnjnr#iefix')
-      format('embedded-opentype'),
-    url('fonts/beautysalon-icons.ttf?qxnjnr') format('truetype'),
-    url('fonts/beautysalon-icons.woff?qxnjnr') format('woff'),
-    url('fonts/beautysalon-icons.svg?qxnjnr#beautysalon-icons') format('svg');
+  src:  url('fonts/beautysalon-icons.eot?ilvpbf');
+  src:  url('fonts/beautysalon-icons.eot?ilvpbf#iefix') format('embedded-opentype'),
+    url('fonts/beautysalon-icons.ttf?ilvpbf') format('truetype'),
+    url('fonts/beautysalon-icons.woff?ilvpbf') format('woff'),
+    url('fonts/beautysalon-icons.svg?ilvpbf#beautysalon-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-i {
+[class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'beautysalon-icons' !important;
   speak: never;
@@ -26,39 +25,42 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow-up:before {
+  content: "\e90c";
+}
 .icon-close:before {
-  content: '\e900';
+  content: "\e900";
 }
 .icon-cosmetic:before {
-  content: '\e901';
+  content: "\e901";
 }
 .icon-facebook:before {
-  content: '\e902';
+  content: "\e902";
 }
 .icon-instagram:before {
-  content: '\e903';
+  content: "\e903";
 }
 .icon-mail:before {
-  content: '\e904';
+  content: "\e904";
 }
 .icon-map-pin:before {
-  content: '\e905';
+  content: "\e905";
 }
 .icon-menu:before {
-  content: '\e906';
+  content: "\e906";
 }
 .icon-phone:before {
-  content: '\e907';
+  content: "\e907";
 }
 .icon-trim:before {
-  content: '\e908';
+  content: "\e908";
 }
 .icon-whatsapp:before {
-  content: '\e909';
+  content: "\e909";
 }
 .icon-woman-hair:before {
-  content: '\e90a';
+  content: "\e90a";
 }
 .icon-youtube:before {
-  content: '\e90b';
+  content: "\e90b";
 }
