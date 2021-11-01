@@ -35,7 +35,7 @@ const swiper = new Swiper('.swiper', {
   pagination: {
     el: '.swiper-pagination',
     type: 'bullets',
-    dynamicBullets: true
+    dynamicBullets: true,
   },
   loop: false,
 
@@ -45,9 +45,9 @@ const swiper = new Swiper('.swiper', {
   breakpoints: {
     767: {
       slidesPerView: 2,
-      setWrapperSize: true
-    }
-  }
+      setWrapperSize: true,
+    },
+  },
 });
 
 /* ScrollReveal: Show elements on scroll */
@@ -55,7 +55,7 @@ const scrollReveal = ScrollReveal({
   origin: 'top',
   distance: '30px',
   duration: 750,
-  reset: true
+  reset: true,
 });
 
 scrollReveal.reveal(
